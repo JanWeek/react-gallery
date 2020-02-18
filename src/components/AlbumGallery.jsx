@@ -7,8 +7,11 @@ function AlbumGallery({ albums }) {
       {albums.map(album => {
         return (
           <SC.AlbumItem key={album.id}>
-            <SC.AlbumWrapper>
-              <span>{album.title}</span>
+            <SC.AlbumWrapper href={`/albums/${album.id}`}>
+              <div className="img">
+                <img src={`https://via.placeholder.com/300/${album.thumbnailSlug}`} alt="" />
+              </div>
+              <div className="title">{`${album.title} (${album.count})`}</div>
             </SC.AlbumWrapper>
           </SC.AlbumItem>
         );
@@ -22,22 +25,32 @@ const SC = {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 -10px;
+    margin: 0 -20px;
   `,
   AlbumItem: styled.div`
     width: 20%;
-    padding: 0 10px;
+    padding: 0 20px;
     margin-bottom: 20px;
   `,
-  AlbumWrapper: styled.div`
+  AlbumWrapper: styled.a`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 10px 15px;
     min-height: 200px;
-    background: #ddd;
+    text-decoration: none;
+    color: #1c1e21;
 
-    span {
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+    }
+
+    .title {
+      margin-top: 10px;
+      padding: 0 10px;
       text-align: center;
     }
   `
