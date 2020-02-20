@@ -3,6 +3,7 @@
 }
 body {
   padding-top: 3.75rem;
+  background: #f7f8fc;
 }
 .App main {
   max-width: 1200px;

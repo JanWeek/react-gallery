@@ -1,22 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function AlbumGallery({ albums }) {
+function AlbumGallery({ albums, onBtnClick, disableBtn }) {
   return (
-    <SC.Container>
-      {albums.map(album => {
-        return (
-          <SC.AlbumItem key={album.id}>
-            <SC.AlbumWrapper href={`/albums/${album.id}`}>
-              <div className="img">
-                <img src={`https://via.placeholder.com/300/${album.thumbnailSlug}`} alt="" />
-              </div>
-              <div className="title">{`${album.title} (${album.count})`}</div>
-            </SC.AlbumWrapper>
-          </SC.AlbumItem>
-        );
-      })}
-    </SC.Container>
+    <React.Fragment>
+      <SC.Container>
+        {albums.map(album => {
+          return (
+            <SC.AlbumItem key={album.id}>
+              <SC.AlbumWrapper href={`/albums/${album.id}`}>
+                <div className="img">
+                  <img
+                    src={`https://via.placeholder.com/300/${album.thumbnailSlug}`}
+                    alt=""
+                  />
+                </div>
+                <div className="title">{`${album.title} (${album.count})`}</div>
+              </SC.AlbumWrapper>
+            </SC.AlbumItem>
+          );
+        })}
+      </SC.Container>
+      <SC.Footer>
+        {!disableBtn && <button className="btn" onClick={() => onBtnClick()}>More</button>}
+      </SC.Footer>
+    </React.Fragment>
   );
 }
 
@@ -53,7 +61,32 @@ const SC = {
       padding: 0 10px;
       text-align: center;
     }
+  `,
+  Footer: styled.a`
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #2b7de0;
+      border-color: #2b7de0;
+      border: 1px solid transparent;
+      color: #fff;
+      border-radius: 3px;
+      outline: none;
+      margin: 0;
+
+      &:focus,
+      &:active {
+        background-color: #468de4;
+        border-color: #468de4;
+      }
+      &:active {
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      }
+    }
   `
-}
+};
 
 export default AlbumGallery;

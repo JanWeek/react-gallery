@@ -3,21 +3,27 @@ import handlers from '../handlers';
 import AlbumGallery from '../components/AlbumGallery';
 
 function Albums() {
-  async function fetchAlbums() {
-    let albums = await handlers.getAlbumsData(10, 0);
-    console.log(albums)
-    setAlbums(albums);
+  async function loadAlbums() {
+    if (albumsCount && offset >= albumsCount) {
+      return false;
+    }
+    let { albums, count } = await handlers.getAlbumsData(20, offset);
+    setAlbumsCount(count);
+    setAlbums(prevAlbums => [...prevAlbums, ...albums]);
+    setOffset(offset + 20);
   }
+  const [offset, setOffset] = useState(0);
+  const [albumsCount, setAlbumsCount] = useState(false);
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    fetchAlbums();
+    loadAlbums();
   }, []);
 
   return (
     <div>
       <h1>Albums</h1>
-      <AlbumGallery albums={albums} />
+      <AlbumGallery albums={albums} onBtnClick={loadAlbums} disableBtn={offset >= albumsCount} />
     </div>
   );
 }

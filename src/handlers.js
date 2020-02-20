@@ -11,9 +11,21 @@ async function loadAlbumData(album) {
 
 export default {
   getAlbumsData: async function(limit = 10, skip = 0, userId = false) {
-    let albums = await api.loadAlbums(limit, skip, userId);
-    let data = await albums.map(album => loadAlbumData(album));
-    data = await Promise.all(data);
+    let data = await api.loadAlbums(limit, skip, userId);
+    data.albums = await data.albums.map(album => loadAlbumData(album));
+    data.albums = await Promise.all(data.albums);
     return data;
+  },
+
+  getAlbumById: async function(albumId) {
+    let album = await api.loadAlbum(albumId);
+    let user = await api.loadUser(album.userId);
+    album = {...album, user: user };
+    return album;
+  },
+
+  getUsers: async function() {
+    let users = await api.loadUsers();
+    return users;
   }
 }
