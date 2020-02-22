@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Button from './ui/Button';
 
-function AlbumGallery({ albums, onBtnClick, disableBtn }) {
+function AlbumList({ albums, onBtnClick, disableBtn }) {
   return (
     <React.Fragment>
       <SC.Container>
         {albums.map(album => {
           return (
             <SC.AlbumItem key={album.id}>
-              <SC.AlbumWrapper href={`/albums/${album.id}`}>
+              <SC.AlbumWrapper to={`/albums/${album.id}`}>
                 <div className="img">
                   <img
                     src={`https://via.placeholder.com/300/${album.thumbnailSlug}`}
@@ -22,7 +24,7 @@ function AlbumGallery({ albums, onBtnClick, disableBtn }) {
         })}
       </SC.Container>
       <SC.Footer>
-        {!disableBtn && <button className="btn" onClick={() => onBtnClick()}>More</button>}
+        {!disableBtn && <Button className="btn" onClick={() => onBtnClick()}>More</Button>}
       </SC.Footer>
     </React.Fragment>
   );
@@ -40,7 +42,7 @@ const SC = {
     padding: 0 20px;
     margin-bottom: 20px;
   `,
-  AlbumWrapper: styled.a`
+  AlbumWrapper: styled(Link)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,27 +68,7 @@ const SC = {
     display: flex;
     justify-content: center;
     margin: 15px 0;
-
-    .btn {
-      padding: 10px 20px;
-      background-color: #2b7de0;
-      border-color: #2b7de0;
-      border: 1px solid transparent;
-      color: #fff;
-      border-radius: 3px;
-      outline: none;
-      margin: 0;
-
-      &:focus,
-      &:active {
-        background-color: #468de4;
-        border-color: #468de4;
-      }
-      &:active {
-        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-      }
-    }
   `
 };
 
-export default AlbumGallery;
+export default AlbumList;

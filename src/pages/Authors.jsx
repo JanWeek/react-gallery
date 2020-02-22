@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import handlers from '../handlers';
-import Users from '../components/Users';
+import handlers from '../utility/handlers';
+import UserList from '../components/UserList';
 
 function Authors() {
   async function loadAuthors() {
@@ -17,7 +17,7 @@ function Authors() {
   return (
     <div>
       <h1>Authors</h1>
-      <Users users={users} />
+      <UserList users={users} />
     </div>
   );
 }

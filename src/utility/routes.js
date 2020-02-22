@@ -1,7 +1,7 @@
-import Home from './pages/Home';
-import Authors from './pages/Authors';
-import Albums from './pages/Albums';
-import Album from './pages/Album';
+import Home from '../pages/Home';
+import Authors from '../pages/Authors';
+import Albums from '../pages/Albums';
+import Album from '../pages/Album';
 
 export default [
   { path: '/', name: 'Home', Component: Home },

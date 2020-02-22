@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React/*, { useState, useContext }*/ from 'react';
 import '../App.css';
 
 function Home() {
-  const [authots, setAuthors] = useState([]);
+  //const [authors, setAuthors] = useState([]);
 
   return (
     <div>

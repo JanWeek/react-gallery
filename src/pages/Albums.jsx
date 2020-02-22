@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import handlers from '../handlers';
-import AlbumGallery from '../components/AlbumGallery';
+import handlers from '../utility/handlers';
+import AlbumList from '../components/AlbumList';
 
 function Albums() {
+  const [offset, setOffset] = useState(0);
+  const [albumsCount, setAlbumsCount] = useState(false);
+  const [albums, setAlbums] = useState([]);
+
   async function loadAlbums() {
     if (albumsCount && offset >= albumsCount) {
       return false;
@@ -12,9 +16,6 @@ function Albums() {
     setAlbums(prevAlbums => [...prevAlbums, ...albums]);
     setOffset(offset + 20);
   }
-  const [offset, setOffset] = useState(0);
-  const [albumsCount, setAlbumsCount] = useState(false);
-  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     loadAlbums();
@@ -23,7 +24,7 @@ function Albums() {
   return (
     <div>
       <h1>Albums</h1>
-      <AlbumGallery albums={albums} onBtnClick={loadAlbums} disableBtn={offset >= albumsCount} />
+      <AlbumList albums={albums} onBtnClick={loadAlbums} disableBtn={offset >= albumsCount} />
     </div>
   );
 }

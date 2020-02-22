@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import routes from './routes';
+import routes from './utility/routes';
 import Header from './layout/Header';
 
 function App() {
