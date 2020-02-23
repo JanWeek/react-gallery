@@ -36,8 +36,13 @@ export default {
     return data;
   },
 
-  getUsers: async function() {
-    let users = await api.loadUsers();
+  getUsers: async function(limit = 10, offset = 0) {
+    let users = await api.loadUsers(limit, offset);
     return users;
+  },
+
+  getUserById: async function(userId) {
+    let data = await api.loadUser(userId);
+    return data;
   }
 }

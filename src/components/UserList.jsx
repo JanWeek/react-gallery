@@ -37,6 +37,15 @@ const SC = {
     @media screen and (max-width: 992px) {
       width: 25%;
     }
+    @media screen and (max-width: 767px) {
+      width: calc(100% / 3);
+    }
+    @media screen and (max-width: 600px) {
+      width: 50%;
+    }
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
   `,
   UserWrapper: styled(Link)`
     background: #fff;
@@ -47,6 +56,11 @@ const SC = {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 5px 25px 0px rgba(18, 25, 38, 0.1);
+    }
 
     .logo {
       width: 50px;

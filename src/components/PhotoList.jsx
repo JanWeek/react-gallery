@@ -9,7 +9,13 @@ function PhotoList({ photos, onBtnClick, disableBtn, openModal }) {
         {photos.map((photo, index) => {
           return (
             <SC.PhotoItem key={photo.id}>
-              <SC.PhotoWrapper href={photo.url} onClick={(e) => {e.preventDefault(); openModal(index)}}>
+              <SC.PhotoWrapper
+                href={photo.url}
+                onClick={e => {
+                  e.preventDefault();
+                  openModal(index);
+                }}
+              >
                 <img
                   src={`https://via.placeholder.com/250/${photo.slug}`}
                   alt={photo.title}
@@ -19,13 +25,13 @@ function PhotoList({ photos, onBtnClick, disableBtn, openModal }) {
           );
         })}
       </SC.Container>
-      <SC.Footer>
-        {!disableBtn && (
+      {!disableBtn && (
+        <SC.Footer>
           <Button className="btn" onClick={() => onBtnClick()}>
             More
           </Button>
-        )}
-      </SC.Footer>
+        </SC.Footer>
+      )}
     </React.Fragment>
   );
 }
@@ -59,7 +65,7 @@ const SC = {
       object-fit: cover;
     }
   `,
-  Footer: styled.a`
+  Footer: styled.div`
     display: flex;
     justify-content: center;
     margin: 15px 0;

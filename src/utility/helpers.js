@@ -38,5 +38,14 @@ export default {
     } else {
       return false;
     }
+  },
+
+  getDeclination: function(name) {
+    let lastChar = name[name.length - 1];
+    if(lastChar === 's') {
+      return `${name}'`;
+    } else {
+      return `${name}'s`;
+    }
   }
 }

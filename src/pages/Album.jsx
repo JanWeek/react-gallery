@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { IsLoadingContext, CurrentPhotoContext } from '../context';
 import PhotoList from '../components/PhotoList';
 import handlers from '../utility/handlers';
@@ -42,11 +44,39 @@ function Album({ match }) {
 
   return (
     <div>
-      <h1>{albumInfo.title}</h1>
-      <PhotoList photos={photos} onBtnClick={loadPhotos} disableBtn={offset >= albumInfo.count} openModal={openModalPhoto} />
+      <SC.Header>
+        <h1>{albumInfo.title}</h1>
+        <SC.BackLink to="/albums">Back to albums</SC.BackLink>
+      </SC.Header>
+      <PhotoList
+        photos={photos}
+        onBtnClick={loadPhotos}
+        disableBtn={offset >= albumInfo.count}
+        openModal={openModalPhoto}
+      />
     </div>
   );
-
 }
+
+const SC = {
+  Header: styled.div`
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    h1 {
+      @media screen and (max-width: 499px) {
+        display: block;
+        width: 100%;
+      }
+    }
+  `,
+  BackLink: styled(Link)`
+    color: #aaa;
+    font-size: 14px;
+    margin: 10px 0 10px auto;
+    align-self: end;
+  `
+};
 
 export default Album;

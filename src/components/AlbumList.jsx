@@ -23,9 +23,9 @@ function AlbumList({ albums, onBtnClick, disableBtn }) {
           );
         })}
       </SC.Container>
-      <SC.Footer>
-        {!disableBtn && <Button className="btn" onClick={() => onBtnClick()}>More</Button>}
-      </SC.Footer>
+      {!disableBtn && <SC.Footer>
+        <Button className="btn" onClick={() => onBtnClick()}>More</Button>
+      </SC.Footer>}
     </React.Fragment>
   );
 }
@@ -74,7 +74,7 @@ const SC = {
       text-align: center;
     }
   `,
-  Footer: styled.a`
+  Footer: styled.div`
     display: flex;
     justify-content: center;
     margin: 15px 0;
