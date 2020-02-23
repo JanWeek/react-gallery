@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { IsLoadingContext, CurrentPhotoContext } from './context'
 import routes from './utility/routes';
-import Header from './layout/Header';
+import Header from './components/ui/Header';
 import ModalPhoto from './components/ModalPhoto';
 import Loader from './components/ui/Loader';
 

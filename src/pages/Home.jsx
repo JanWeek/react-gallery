@@ -15,11 +15,9 @@ function Home() {
   const { setCurrentPhoto, setCurrentGalery } = useContext(CurrentPhotoContext);
 
   useEffect(() => {
-    setIsLoading(true);
     loadPhotos();
     loadAlbums();
     loadAuthors();
-    setIsLoading(false);
   }, []);
 
   function openModalPhoto(photo) {
@@ -31,16 +29,21 @@ function Home() {
     setIsLoading(true);
     let photos = await handlers.getPhotos(12, 0);
     setPhotos(photos);
+    setIsLoading(false);
   }
 
   async function loadAlbums() {
+    setIsLoading(true);
     let { albums } = await handlers.getAlbumsData(5, 0);
     setAlbums(albums);
+    setIsLoading(false);
   }
 
   async function loadAuthors() {
+    setIsLoading(true);
     let authors = await handlers.getUsers(5);
     setAuthors(authors);
+    setIsLoading(false);
   }
 
   return (
