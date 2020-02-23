@@ -1,51 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { IsLoadingContext, CurrentPhotoContext } from './context'
 import routes from './utility/routes';
 import Header from './layout/Header';
+import ModalPhoto from './components/ModalPhoto';
+import Loader from './components/ui/Loader';
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState(false);
+  const [currentGallery, setCurrentGalery] = useState(false);
+
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <main>
-          <Switch>
-            {/*
+    <IsLoadingContext.Provider value={{ setIsLoading }}>
+      <CurrentPhotoContext.Provider value={{ setCurrentPhoto, setCurrentGalery }}>
+        <div className="App">
+          <Router>
+            <Header />
+            <main>
+              <Switch>
+                {/*
               routes.map(({ path, component }, key) => (
                 <Route path={path} exact component={component} key={key} />
               ))
             */}
-            {routes.map(({ path, name, Component }, key) => (
-              <Route
-                exact
-                path={path}
-                key={key}
-                render={props => {
-                  const crumbs = routes
-                    .filter(({ path }) => props.match.path.includes(path))
-                    .map(({ path, ...rest }) => ({
-                      path: Object.keys(props.match.params).length ?
-                        Object.keys(props.match.params).reduce(
-                          (path, param) =>
-                            path.replace(
-                              `:${param}`,
-                              props.match.params[param]
-                            ),
-                          path
-                        ) : path,
-                      ...rest
-                    }));
-                  console.log(`Generated crumbs for ${props.match.path}`);
-                  crumbs.map(({ name, path }) => console.log({ name, path }));
-                  return <Component {...props} />
-                }}
-              />
-            ))}
-          </Switch>
-        </main>
-      </Router>
-    </div>
+                {routes.map(({ path, name, Component }, key) => (
+                  <Route exact path={path} key={key} render={props => (<Component {...props} />)} />
+                ))}
+              </Switch>
+            </main>
+          </Router>
+          <ModalPhoto photoIndex={currentPhoto} gallery={currentGallery} setCurrentPhoto={setCurrentPhoto} />
+          <Loader showLoader={isLoading} />
+        </div>
+      </CurrentPhotoContext.Provider>
+    </IsLoadingContext.Provider>
   );
 }
 

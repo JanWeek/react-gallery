@@ -35,12 +35,22 @@ const SC = {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 -20px;
+    margin: 0 -15px;
   `,
   AlbumItem: styled.div`
     width: 20%;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+
+    @media screen and (max-width: 991px) {
+      width: 25%;
+    }
+    @media screen and (max-width: 767px) {
+      width: calc(100% / 3);
+    }
+    @media screen and (max-width: 499px) {
+      width: 50%;
+    }
   `,
   AlbumWrapper: styled(Link)`
     display: flex;

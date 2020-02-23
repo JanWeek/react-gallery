@@ -27,12 +27,16 @@ const SC = {
   Container: styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -20px;
+    margin: 0 -15px;
   `,
   UserItem: styled.div`
     width: 20%;
-    padding: 0 20px;
-    margin-bottom: 40px;
+    padding: 0 15px;
+    margin-bottom: 30px;
+
+    @media screen and (max-width: 992px) {
+      width: 25%;
+    }
   `,
   UserWrapper: styled(Link)`
     background: #fff;
@@ -54,11 +58,13 @@ const SC = {
     }
     .username {
       margin-top: 10px;
+      text-align: center;
     }
     .fullname {
       margin-top: 5px;
       color: #aaa;
       font-size: 12px;
+      text-align: center;
     }
   `,
   Logo: styled.div`

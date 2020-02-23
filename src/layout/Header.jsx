@@ -50,11 +50,16 @@ const SC = {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
     height: 100%;
     font-size: 18px;
+
+    @media screen and (max-width: 499px) {
+      font-size: 14px;
+      padding: 0 0.5rem;
+    }
   `,
   Navigation: styled.nav`
     padding: 0 10px;
@@ -78,6 +83,10 @@ const SC = {
           font-weight: 500;
           padding: 0.25rem 1rem;
           text-decoration: none;
+
+          @media screen and (max-width: 499px) {
+            padding: 0.25rem 0.7rem;
+          }
         }
       }
     }
