@@ -66,12 +66,23 @@ const SC = {
       align-items: center;
       width: 100%;
       height: auto;
+      overflow: hidden;
+
+      img {
+        transition: all .3s ease-in-out;
+      }
     }
 
     .title {
       margin-top: 10px;
       padding: 0 10px;
       text-align: center;
+    }
+
+    &:hover {
+      .img img {
+        transform: scale(1.1);
+      }
     }
   `,
   Footer: styled.div`

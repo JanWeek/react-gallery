@@ -76,6 +76,11 @@ const SC = {
     font-size: 14px;
     margin: 10px 0 10px auto;
     align-self: end;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      color: #333;
+    }
   `
 };
 

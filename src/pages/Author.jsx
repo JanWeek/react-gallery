@@ -122,6 +122,11 @@ const SC = {
     font-size: 14px;
     margin: 0 0 0 auto;
     align-self: end;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      color: #333;
+    }
   `
 };
 

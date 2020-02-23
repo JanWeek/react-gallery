@@ -6,11 +6,11 @@ function ModalPhoto({ photoIndex, gallery, setCurrentPhoto }) {
   return (
     <React.Fragment>
       {(typeof photoIndex === 'number' && photoIndex >= 0 && gallery) && (
-        <SC.Modal onClick={e => {console.log("click!"); setCurrentPhoto(false);}}>
+        <SC.Modal onClick={e => setCurrentPhoto(false)}>
           <div className="header">
             <AiOutlineClose color="#aaa" size="30px" className="close-btn" />
           </div>
-          <div className="container" onClick={e => {e.stopPropagation();}}>
+          <div className="container" onClick={e => e.stopPropagation()}>
             {photoIndex !== 0 && (<div className="prev-photo" onClick={() => prevPhoto()}>
               <AiOutlineLeft color="#aaa" size="60px" className="arrow" />
             </div>)}
@@ -21,7 +21,7 @@ function ModalPhoto({ photoIndex, gallery, setCurrentPhoto }) {
               <AiOutlineRight color="#aaa" size="60px" className="arrow" />
             </div>)}
           </div>
-          <div className="footer" onClick={(e) => e.stopPropagation()}>
+          <div className="footer" onClick={e => e.stopPropagation()}>
             <div className="title">{gallery[photoIndex].title}</div>
             <div className="counter">{`${photoIndex + 1} / ${gallery.length}`}</div>
           </div>
