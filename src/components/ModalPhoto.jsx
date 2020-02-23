@@ -11,13 +11,13 @@ function ModalPhoto({ photoIndex, gallery, setCurrentPhoto }) {
             <AiOutlineClose color="#aaa" size="30px" className="close-btn" />
           </div>
           <div className="container" onClick={e => e.stopPropagation()}>
-            {photoIndex !== 0 && (<div className="prev-photo" onClick={() => prevPhoto()}>
+            {photoIndex !== 0 && (<div className="prev-photo" onClick={prevPhoto}>
               <AiOutlineLeft color="#aaa" size="60px" className="arrow" />
             </div>)}
             <div className="content">
               <img src={gallery[photoIndex].url} alt={gallery[photoIndex].title} />
             </div>
-            {photoIndex !== gallery.length - 1 && (<div className="next-photo" onClick={() => nextPhoto()}>
+            {photoIndex !== gallery.length - 1 && (<div className="next-photo" onClick={nextPhoto}>
               <AiOutlineRight color="#aaa" size="60px" className="arrow" />
             </div>)}
           </div>

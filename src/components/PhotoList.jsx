@@ -27,7 +27,7 @@ function PhotoList({ photos, onBtnClick, disableBtn, openModal }) {
       </SC.Container>
       {!disableBtn && (
         <SC.Footer>
-          <Button className="btn" onClick={() => onBtnClick()}>
+          <Button className="btn" onClick={onBtnClick}>
             More
           </Button>
         </SC.Footer>

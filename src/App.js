@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import { IsLoadingContext, CurrentPhotoContext } from './context'
+import { IsLoadingContext, CurrentPhotoContext } from './context';
 import routes from './utility/routes';
 import Header from './components/ui/Header';
 import ModalPhoto from './components/ModalPhoto';
@@ -21,11 +20,6 @@ function App() {
             <Header />
             <main>
               <Switch>
-                {/*
-              routes.map(({ path, component }, key) => (
-                <Route path={path} exact component={component} key={key} />
-              ))
-            */}
                 {routes.map(({ path, name, Component }, key) => (
                   <Route exact path={path} key={key} render={props => (<Component {...props} />)} />
                 ))}

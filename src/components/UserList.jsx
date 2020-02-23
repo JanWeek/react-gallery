@@ -6,19 +6,17 @@ import helpers from '../utility/helpers';
 function UserList({ users }) {
   return (
     <SC.Container>
-      {users.map(user => {
-        return (
-          <SC.UserItem key={user.id}>
-            <SC.UserWrapper to={`/authors/${user.id}`}>
-              <SC.Logo className="logo" bgcolor={helpers.getStringColor(user.name)}>
-                <span>{helpers.getInitials(user.name)}</span>
-              </SC.Logo>
-              <div className="username">{user.username}</div>
-              <div className="fullname">{user.name}</div>
-            </SC.UserWrapper>
-          </SC.UserItem>
-        );
-      })}
+      {users.map(user => (
+        <SC.UserItem key={user.id}>
+          <SC.UserWrapper to={`/authors/${user.id}`}>
+            <SC.Logo className="logo" bgcolor={helpers.getStringColor(user.name)} >
+              <span>{helpers.getInitials(user.name)}</span>
+            </SC.Logo>
+            <div className="username">{user.username}</div>
+            <div className="fullname">{user.name}</div>
+          </SC.UserWrapper>
+        </SC.UserItem>
+      ))}
     </SC.Container>
   );
 }

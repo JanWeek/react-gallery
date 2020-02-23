@@ -11,10 +11,11 @@ function AlbumList({ albums, onBtnClick, disableBtn }) {
           return (
             <SC.AlbumItem key={album.id}>
               <SC.AlbumWrapper to={`/albums/${album.id}`}>
-                <div className="img">
+                <div className="image-wrapper">
                   <img
                     src={`https://via.placeholder.com/300/${album.thumbnailSlug}`}
-                    alt=""
+                    alt={album.title}
+                    className="image"
                   />
                 </div>
                 <div className="title">{`${album.title} (${album.count})`}</div>
@@ -24,7 +25,7 @@ function AlbumList({ albums, onBtnClick, disableBtn }) {
         })}
       </SC.Container>
       {!disableBtn && <SC.Footer>
-        <Button className="btn" onClick={() => onBtnClick()}>More</Button>
+        <Button className="btn" onClick={onBtnClick}>More</Button>
       </SC.Footer>}
     </React.Fragment>
   );
@@ -60,7 +61,7 @@ const SC = {
     text-decoration: none;
     color: #1c1e21;
 
-    .img {
+    .image-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -68,7 +69,7 @@ const SC = {
       height: auto;
       overflow: hidden;
 
-      img {
+      .image {
         transition: all .3s ease-in-out;
       }
     }
@@ -80,7 +81,7 @@ const SC = {
     }
 
     &:hover {
-      .img img {
+      .image-wrapper .image {
         transform: scale(1.1);
       }
     }
